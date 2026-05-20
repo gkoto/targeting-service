@@ -1,3 +1,4 @@
+from tracing import init_telemetry
 import os
 import sys
 import psycopg2
@@ -18,6 +19,7 @@ log = logging.getLogger(__name__)
 load_dotenv() 
 
 app = Flask(__name__)
+init_telemetry(app, 'targeting-service')
 
 # --- Configuração ---
 DATABASE_URL = os.getenv("DATABASE_URL")
